@@ -1,0 +1,9 @@
+mineru==3.0.0
+boto3>=1.34
+pyyaml>=6.0
+pytest>=8.0
+hypothesis>=6.100
+moto[s3]>=5.0
+fastapi>=0.110
+uvicorn[standard]>=0.29
+aiosqlite>=0.20

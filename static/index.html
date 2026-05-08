@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR 管理平台</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@5.0.0/lib/index.umd.js"></script>
+</head>
+<body>
+
+  <!-- ConfigBar：顶部配置信息 -->
+  <div id="config-bar">
+    <span class="config-title">OCR 管理平台</span>
+    <div id="config-items">
+      <span class="loading"><span class="spinner"></span>加载配置中…</span>
+    </div>
+  </div>
+
+  <div id="app">
+
+    <!-- Nav Tabs：文件列表 / 任务列表 -->
+    <div class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab" id="tab-files" onclick="switchTab('files')">文件列表</button>
+      <button class="nav-tab active" id="tab-jobs" onclick="switchTab('jobs')">任务列表</button>
+    </div>
+
+    <!-- FileListView：文件列表 + 提交按钮 -->
+    <div class="view-panel" id="view-files">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">源文件列表</span>
+          <button class="btn btn-secondary btn-sm" onclick="loadFiles()">刷新</button>
+        </div>
+
+        <!-- 上传区域 -->
+        <div id="upload-zone"
+             ondragover="onDragOver(event)"
+             ondragleave="onDragLeave(event)"
+             ondrop="onDrop(event)"
+             onclick="document.getElementById('upload-input').click()">
+          <span class="upload-icon">📁</span>
+          <span>拖拽文件到此处，或 <u>点击选择文件</u></span>
+          <span style="font-size:11px;color:#9ca3af;">支持 PDF、PNG、JPG、JPEG、TIFF，可多选</span>
+        </div>
+        <input type="file" id="upload-input" multiple
+               accept=".pdf,.png,.jpg,.jpeg,.tiff"
+               style="display:none"
+               onchange="onFileInputChange(event)">
+        <div id="upload-status"></div>
+
+        <div id="files-error"></div>
+        <div id="files-loading" class="loading">
+          <span class="spinner"></span>加载中…
+        </div>
+        <div id="files-content" style="display:none">
+          <div style="margin-bottom:10px; display:flex; align-items:center; gap:10px;">
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;user-select:none;">
+              <input type="checkbox" id="show-all-files" onchange="loadFiles()" style="accent-color:#2563eb;">
+              显示全部文件（含已提交）
+            </label>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:36px">
+                  <input type="checkbox" id="select-all" title="全选" onchange="toggleSelectAll(this)">
+                </th>
+                <th>文件名</th>
+                <th style="width:80px">大小</th>
+                <th style="width:80px">任务状态</th>
+              </tr>
+            </thead>
+            <tbody id="files-tbody"></tbody>
+          </table>
+          <div style="margin-top:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary" id="submit-btn" onclick="submitJobs()" disabled>
+              提交 OCR 任务
+            </button>
+            <label style="font-size:13px;color:#374151;display:flex;align-items:center;gap:6px;">
+              识别语言：
+              <select id="ocr-lang" style="font-size:13px;padding:4px 8px;border:1px solid #dde1e9;border-radius:6px;background:#fff;cursor:pointer;">
+                <option value="ch">中文（ch）</option>
+                <option value="en">英文（en）</option>
+                <option value="arabic">阿拉伯语（arabic）</option>
+                <option value="korean">韩语（korean）</option>
+                <option value="japan">日语（japan）</option>
+                <option value="latin">拉丁语系（latin）</option>
+                <option value="cyrillic">西里尔字母（cyrillic）</option>
+                <option value="devanagari">梵文（devanagari）</option>
+              </select>
+            </label>
+            <span id="submit-status" style="font-size:13px; color:#6b7280;"></span>
+          </div>
+        </div>
+        <div id="files-empty" class="empty-state" style="display:none">暂无可处理文件</div>
+      </div>
+    </div>
+
+    <!-- JobListView：任务状态列表 -->
+    <div class="view-panel active" id="view-jobs">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">任务列表</span>
+          <button class="btn btn-secondary btn-sm" onclick="loadJobs()">刷新</button>
+        </div>
+        <div id="jobs-error"></div>
+        <div id="jobs-loading" class="loading">
+          <span class="spinner"></span>加载中…
+        </div>
+        <div id="jobs-content" style="display:none">
+          <div style="margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+            <button class="btn btn-danger btn-sm" id="delete-btn" onclick="deleteSelectedJobs()" disabled>删除选中</button>
+            <button class="btn btn-primary btn-sm" id="download-btn" onclick="downloadSelectedJobs()" disabled>打包下载</button>
+            <span id="jobs-action-status" style="font-size:13px; color:#6b7280;"></span>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:36px">
+                  <input type="checkbox" id="jobs-select-all" title="全选" onchange="toggleJobsSelectAll(this)">
+                </th>
+                <th>文件名</th>
+                <th>状态</th>
+                <th>提交时间</th>
+                <th>完成时间</th>
+                <th>用时(秒)</th>
+                <th>大小</th>
+                <th>页数</th>
+                <th>错误信息</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="jobs-tbody"></tbody>
+          </table>
+        </div>
+        <div id="jobs-empty" class="empty-state" style="display:none">暂无任务记录</div>
+      </div>
+    </div>
+
+    <!-- DiffView：对比视图（左 PDF/图片，右 Markdown） -->
+    <div id="diff-view">
+      <div class="diff-header">
+        <button class="btn btn-secondary btn-sm" onclick="goBack()">← 返回</button>
+        <span class="diff-title" id="diff-title"></span>
+      </div>
+      <div class="diff-panels">
+        <div class="diff-panel">
+          <div class="diff-panel-header">原始文件</div>
+          <div class="diff-panel-body" id="source-panel">
+            <div class="loading" style="padding:20px"><span class="spinner"></span>加载中…</div>
+          </div>
+        </div>
+        <div class="diff-panel">
+          <div class="diff-panel-header">OCR 结果（Markdown）</div>
+          <div class="diff-panel-body" id="result-panel">
+            <div class="loading" style="padding:20px"><span class="spinner"></span>加载中…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <script src="/app.js"></script>
+</body>
+</html>
