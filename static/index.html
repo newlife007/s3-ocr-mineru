@@ -94,6 +94,14 @@
                 <option value="devanagari">梵文（devanagari）</option>
               </select>
             </label>
+            <label style="font-size:13px;color:#374151;display:flex;align-items:center;gap:6px;">
+              后端模式：
+              <select id="ocr-backend" style="font-size:13px;padding:4px 8px;border:1px solid #dde1e9;border-radius:6px;background:#fff;cursor:pointer;" title="MinerU OCR 引擎后端模式">
+                <option value="pipeline">标准流水线（pipeline）</option>
+                <option value="vlm-auto-engine">VLM自动引擎（vlm-auto-engine）</option>
+                <option value="hybrid-auto-engine" selected>混合自动引擎（hybrid-auto-engine）</option>
+              </select>
+            </label>
             <label style="font-size:13px;color:#374151;display:flex;align-items:center;gap:6px;" id="arabic-bidi-label">
               阿语文本修复：
               <select id="arabic-bidi-fix" style="font-size:13px;padding:4px 8px;border:1px solid #dde1e9;border-radius:6px;background:#fff;cursor:pointer;" title="阿拉伯语文本方向修复模式">
@@ -174,6 +182,6 @@
 
   </div><!-- /#app -->
 
-  <script src="/app.js"></script>
+  <script src="/app.js?v=2"></script>
 </body>
 </html>

@@ -21,11 +21,12 @@ CREATE TABLE IF NOT EXISTS jobs (
     error        TEXT,
     target_key   TEXT,
     lang         TEXT,
-    arabic_bidi_fix TEXT
+    arabic_bidi_fix TEXT,
+    backend      TEXT
 );
 """
 
-_ALLOWED_UPDATE_FIELDS = {"status", "started_at", "completed_at", "page_count", "error", "target_key", "lang", "arabic_bidi_fix"}
+_ALLOWED_UPDATE_FIELDS = {"status", "started_at", "completed_at", "page_count", "error", "target_key", "lang", "arabic_bidi_fix", "backend"}
 
 
 @dataclass
@@ -42,6 +43,7 @@ class JobRecord:
     target_key: Optional[str]
     lang: Optional[str]
     arabic_bidi_fix: Optional[str]
+    backend: Optional[str]
 
 
 def _row_to_record(row: aiosqlite.Row) -> JobRecord:
@@ -59,6 +61,7 @@ def _row_to_record(row: aiosqlite.Row) -> JobRecord:
         target_key=row["target_key"],
         lang=row["lang"] if "lang" in keys else None,
         arabic_bidi_fix=row["arabic_bidi_fix"] if "arabic_bidi_fix" in keys else None,
+        backend=row["backend"] if "backend" in keys else None,
     )
 
 
@@ -91,7 +94,7 @@ class JobStore:
         """Create the jobs table if it does not exist, and migrate existing schema."""
         db = await self._conn()
         await db.execute(_CREATE_TABLE_SQL)
-        for col in ("started_at TEXT", "lang TEXT", "arabic_bidi_fix TEXT"):
+        for col in ("started_at TEXT", "lang TEXT", "arabic_bidi_fix TEXT", "backend TEXT"):
             try:
                 await db.execute(f"ALTER TABLE jobs ADD COLUMN {col}")
             except Exception:
@@ -106,15 +109,16 @@ class JobStore:
         submitted_at: str,
         lang: Optional[str] = None,
         arabic_bidi_fix: Optional[str] = None,
+        backend: Optional[str] = None,
     ) -> JobRecord:
         """Insert a new job record with status='pending' and return it."""
         db = await self._conn()
         await db.execute(
             """
-            INSERT INTO jobs (job_id, file_key, file_size, status, submitted_at, lang, arabic_bidi_fix)
-            VALUES (?, ?, ?, 'pending', ?, ?, ?)
+            INSERT INTO jobs (job_id, file_key, file_size, status, submitted_at, lang, arabic_bidi_fix, backend)
+            VALUES (?, ?, ?, 'pending', ?, ?, ?, ?)
             """,
-            (job_id, file_key, file_size, submitted_at, lang, arabic_bidi_fix),
+            (job_id, file_key, file_size, submitted_at, lang, arabic_bidi_fix, backend),
         )
         await db.commit()
 
@@ -131,6 +135,7 @@ class JobStore:
             target_key=None,
             lang=lang,
             arabic_bidi_fix=arabic_bidi_fix,
+            backend=backend,
         )
 
     async def get_job(self, job_id: str) -> Optional[JobRecord]:

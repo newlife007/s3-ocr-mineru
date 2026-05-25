@@ -205,19 +205,45 @@ async function submitJobs() {
   if (checked.length === 0) return;
 
   const fileKeys = checked.map(cb => cb.value);
-  const lang = document.getElementById('ocr-lang')?.value || null;
-  const arabicBidiFix = document.getElementById('arabic-bidi-fix')?.value || null;
+  
+  // 详细调试
+  const langElement = document.getElementById('ocr-lang');
+  const backendElement = document.getElementById('ocr-backend');
+  const arabicBidiElement = document.getElementById('arabic-bidi-fix');
+  
+  console.log('Elements found:', {
+    langElement: !!langElement,
+    backendElement: !!backendElement,
+    arabicBidiElement: !!arabicBidiElement
+  });
+  
+  const lang = langElement?.value || null;
+  const backend = backendElement?.value || null;
+  const arabicBidiFix = arabicBidiElement?.value || null;
+  
+  console.log('Raw values:', {
+    lang: langElement?.value,
+    backend: backendElement?.value,
+    arabicBidiFix: arabicBidiElement?.value
+  });
+  
   const btn = document.getElementById('submit-btn');
   const statusEl = document.getElementById('submit-status');
+
+  // 添加调试日志
+  console.log('Submitting jobs with:', { lang, arabicBidiFix, backend, fileKeys });
 
   btn.disabled = true;
   statusEl.textContent = '提交中…';
 
   try {
+    const payload = { file_keys: fileKeys, lang, arabic_bidi_fix: arabicBidiFix, backend };
+    console.log('Request payload:', JSON.stringify(payload, null, 2));
+    
     const result = await apiFetch('/api/jobs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file_keys: fileKeys, lang, arabic_bidi_fix: arabicBidiFix }),
+      body: JSON.stringify(payload),
     });
 
     statusEl.textContent = `已提交 ${result.jobs.length} 个任务`;

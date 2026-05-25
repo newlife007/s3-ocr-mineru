@@ -54,28 +54,27 @@ def _clean_arabic_text(text: str) -> str:
     
     处理：
     1. 移除零宽字符
-    2. 规范化空格
-    3. 移除控制字符
+    2. 移除部分控制字符（保留换行、制表符等 Markdown 需要的字符）
+    
+    注意：保留 Markdown 格式所需的空格、制表符、换行符等
     """
     import re
     
     # 移除零宽字符（Zero-width characters）
     text = re.sub(r'[\u200B-\u200D\uFEFF]', '', text)
     
-    # 移除其他不可见的控制字符
-    text = re.sub(r'[\u0000-\u001F\u007F-\u009F]', '', text)
+    # 只移除真正有问题的控制字符，保留换行(\n)、制表符(\t)、回车(\r)
+    # 移除 \x00-\x08, \x0B-\x0C, \x0E-\x1F (保留 \t=\x09, \n=\x0A, \r=\x0D)
+    text = re.sub(r'[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F-\x9F]', '', text)
     
-    # 规范化空格（但保留换行符）
-    lines = text.split('\n')
-    cleaned_lines = []
-    for line in lines:
-        # 将多个空格替换为单个空格
-        line = re.sub(r'[ \t]+', ' ', line)
-        # 移除行首行尾空格
-        line = line.strip()
-        cleaned_lines.append(line)
+    # 不再规范化空格和移除行首行尾空格，以保留 Markdown 格式
+    # 原来的代码会破坏：
+    # - 代码块的缩进
+    # - 列表的缩进
+    # - 表格的对齐
+    # - 引用块的格式
     
-    return '\n'.join(cleaned_lines)
+    return text
 
 
 def _post_process_arabic_text(text: str, normalize: bool = True, clean: bool = True) -> str:
@@ -253,6 +252,26 @@ class MinerURunner:
             f"'-b', '{self.backend}', '-l', '{self.lang}', '-m', 'ocr', "
             f"'-f', 'true', '-t', 'true']; main()"
         )
+        
+        # 记录实际执行的命令（使用 StructuredLogger）
+        from src.logger import StructuredLogger
+        logger = StructuredLogger("mineru_runner")
+        
+        logger.info(
+            "Executing MinerU command",
+            backend=self.backend,
+            lang=self.lang,
+            input_path=str(input_path),
+            output_dir=str(output_dir),
+            arabic_bidi_fix=self.arabic_bidi_fix,
+        )
+        
+        # 构建等效的命令行格式（方便调试）
+        equivalent_cmd = (
+            f"mineru -p '{input_path}' -o '{output_dir}' "
+            f"-b '{self.backend}' -l '{self.lang}' -m 'ocr' -f 'true' -t 'true'"
+        )
+        logger.info("MinerU equivalent command", command=equivalent_cmd)
         
         # 开启中文公式识别优化（实验性功能，对中文文档有效）
         env = {

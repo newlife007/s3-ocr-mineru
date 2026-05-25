@@ -136,6 +136,7 @@ async def run_ocr_job(
             job_record = await job_store.get_job(job_id)
             job_lang = job_record.lang if job_record else None
             job_arabic_bidi_fix = job_record.arabic_bidi_fix if job_record else None
+            job_backend = job_record.backend if job_record else None
 
             tmp_dir = tempfile.mkdtemp()
             try:
@@ -149,9 +150,10 @@ async def run_ocr_job(
                 # 使用 job 里存储的设置，回退到 config 默认值
                 lang = job_lang or config.mineru_lang
                 arabic_bidi_fix = job_arabic_bidi_fix or config.arabic_bidi_fix
-                logger.info("Running OCR", job_id=job_id, lang=lang, backend=config.mineru_backend, arabic_bidi_fix=arabic_bidi_fix)
+                backend = job_backend or config.mineru_backend
+                logger.info("Running OCR", job_id=job_id, lang=lang, backend=backend, arabic_bidi_fix=arabic_bidi_fix)
                 runner = MinerURunner(
-                    backend=config.mineru_backend, 
+                    backend=backend, 
                     lang=lang,
                     arabic_bidi_fix=arabic_bidi_fix,
                     arabic_post_process=True  # 默认启用阿拉伯语后处理

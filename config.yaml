@@ -50,7 +50,9 @@ log_level: "INFO"
 # MinerU 后端模式
 # pipeline - 标准流水线模式（推荐，适合大多数场景）
 # vlm-transformers - 基于视觉语言模型的模式（需要额外依赖）
-mineru_backend: "hybrid-auto-engine"
+# mineru_backend: "hybrid-auto-engine"
+mineru_backend: "vlm-auto-engine"
+# mineru_backend: "pipeline"
 
 # OCR 识别语言
 # ch  - 中文（含中英混排，推荐中文文档使用）

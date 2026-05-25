@@ -1,275 +1,341 @@
 nohup: ignoring input
-INFO:     Started server process [913383]
+INFO:     Started server process [971041]
 INFO:     Waiting for application startup.
-{"timestamp": "2026-05-24T02:48:37.547661+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Stuck job monitor started"}
-{"timestamp": "2026-05-24T02:48:37.547775+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting stuck job monitor", "check_interval": 300, "max_hours": 2.0}
+{"timestamp": "2026-05-25T03:27:11.785316+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Stuck job monitor started"}
+{"timestamp": "2026-05-25T03:27:11.785428+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting stuck job monitor", "check_interval": 300, "max_hours": 2.0}
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     52.83.216.4:24839 - "GET / HTTP/1.1" 304 Not Modified
-INFO:     52.83.216.4:24839 - "GET /app.js HTTP/1.1" 304 Not Modified
-INFO:     52.83.216.4:24839 - "GET /api/config HTTP/1.1" 200 OK
-INFO:     52.83.216.4:61211 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:24839 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:24839 - "DELETE /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:24839 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:24839 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     52.83.216.4:50574 - "POST /api/jobs HTTP/1.1" 202 Accepted
-{"timestamp": "2026-05-24T02:52:27.291143+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
-{"timestamp": "2026-05-24T02:52:27.297163+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
-{"timestamp": "2026-05-24T02:52:27.509218+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "never"}
-{"timestamp": "2026-05-24T02:52:27.509437+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a"}
-INFO:     52.83.216.4:50574 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:35238 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:35238 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:63412 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:63412 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:63412 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:62472 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:62472 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:62472 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:57510 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:57510 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:57510 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:57510 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:57510 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:33335 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:28135 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:28135 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:28135 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     52.83.216.4:28135 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-{"timestamp": "2026-05-24T02:53:55.394882+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a"}
-{"timestamp": "2026-05-24T02:53:55.395012+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "page_count": 1}
-{"timestamp": "2026-05-24T02:53:55.657423+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
-{"timestamp": "2026-05-24T02:53:55.657527+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "1aaf75d9-29c4-424a-94c0-05ce92922c6a", "tmp_dir": "/tmp/tmp7lkq7kwe"}
-INFO:     52.83.216.4:28135 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:50420 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/source HTTP/1.1" 200 OK
-INFO:     52.83.216.4:49698 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/result HTTP/1.1" 200 OK
-INFO:     52.83.216.4:50420 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:49698 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     52.83.216.4:61520 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:8168 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:49092 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:13598 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:38037 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:8414 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:23138 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:13598 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:38037 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:23138 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:8414 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     52.83.216.4:49351 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13424 - "GET / HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13426 - "GET /style.css HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13424 - "GET /app.js HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13426 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13424 - "GET /api/config HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13422 - "GET /favicon.ico HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13424 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13459 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13460 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13459 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13460 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13459 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13461 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13462 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13463 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13463 - "GET /api/jobs/37b06d53-3be6-427f-ba40-e8c017baf588/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13480 - "GET /api/jobs/37b06d53-3be6-427f-ba40-e8c017baf588/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13480 - "GET /api/jobs/37b06d53-3be6-427f-ba40-e8c017baf588 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13531 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13531 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13688 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13688 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13706 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13706 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13764 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13764 - "GET /api/files?show_all=true HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13812 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13812 - "GET /api/files?show_all=true HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13834 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13835 - "GET /api/files?show_all=true HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13835 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13886 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13886 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13960 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13960 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14006 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14006 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14007 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14006 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14007 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14011 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14009 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14007 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14090 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14090 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14159 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14159 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14195 - "POST /api/jobs HTTP/1.1" 202 Accepted
-{"timestamp": "2026-05-24T03:14:45.965445+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "file_key": "ZHGW/ticket-1.png"}
-{"timestamp": "2026-05-24T03:14:45.971327+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "file_key": "ZHGW/ticket-1.png"}
-{"timestamp": "2026-05-24T03:14:46.086817+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "auto"}
-{"timestamp": "2026-05-24T03:14:46.087026+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68"}
-INFO:     115.171.63.75:14195 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14197 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14197 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14197 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14197 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14203 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14203 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14203 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14204 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14204 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14204 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14204 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14204 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14211 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14211 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14211 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14215 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14215 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14215 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14217 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14217 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-{"timestamp": "2026-05-24T03:16:12.737482+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68"}
-{"timestamp": "2026-05-24T03:16:12.737618+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "page_count": 1}
-{"timestamp": "2026-05-24T03:16:12.860446+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "file_key": "ZHGW/ticket-1.png"}
-{"timestamp": "2026-05-24T03:16:12.860542+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "065322e9-47cd-402a-a7d1-d9b38e0f5b68", "tmp_dir": "/tmp/tmpl75njydj"}
-INFO:     115.171.63.75:14218 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14218 - "POST /api/jobs HTTP/1.1" 202 Accepted
-{"timestamp": "2026-05-24T03:16:22.398637+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "file_key": "ZHGW/截图-1.png"}
-{"timestamp": "2026-05-24T03:16:22.404356+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "file_key": "ZHGW/截图-1.png"}
-{"timestamp": "2026-05-24T03:16:22.551318+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "never"}
-{"timestamp": "2026-05-24T03:16:22.551518+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e"}
-INFO:     115.171.63.75:14218 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14218 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14227 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14227 - "GET /api/jobs/065322e9-47cd-402a-a7d1-d9b38e0f5b68 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14227 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14240 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14240 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14240 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14240 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14240 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14251 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14251 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14251 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14252 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14252 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14252 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14256 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14256 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14257 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14257 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-{"timestamp": "2026-05-24T03:17:48.327284+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e"}
-{"timestamp": "2026-05-24T03:17:48.327408+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "page_count": 1}
-{"timestamp": "2026-05-24T03:17:48.418971+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "file_key": "ZHGW/截图-1.png"}
-{"timestamp": "2026-05-24T03:17:48.419081+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "3815f45d-f5d0-4834-b826-be066a63c84e", "tmp_dir": "/tmp/tmpd1tqtprl"}
-INFO:     115.171.63.75:14257 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14559 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14559 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14563 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14563 - "GET /api/jobs/3815f45d-f5d0-4834-b826-be066a63c84e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14565 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14565 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14567 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14567 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14583 - "POST /api/upload HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14583 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14583 - "POST /api/jobs HTTP/1.1" 202 Accepted
-{"timestamp": "2026-05-24T03:25:30.651685+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "file_key": "ZHGW/截图-1-1.png"}
-{"timestamp": "2026-05-24T03:25:30.657474+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "file_key": "ZHGW/截图-1-1.png"}
-{"timestamp": "2026-05-24T03:25:30.763976+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "always"}
-{"timestamp": "2026-05-24T03:25:30.764178+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "bd945519-9fbe-42fa-86fd-405788778019"}
-INFO:     115.171.63.75:14583 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14584 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14591 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14591 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14591 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14591 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14591 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14590 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14590 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14590 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14601 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14601 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14602 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14602 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14602 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14602 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14613 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-{"timestamp": "2026-05-24T03:26:56.138240+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "bd945519-9fbe-42fa-86fd-405788778019"}
-{"timestamp": "2026-05-24T03:26:56.138374+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "page_count": 1}
-{"timestamp": "2026-05-24T03:26:56.225928+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "file_key": "ZHGW/截图-1-1.png"}
-{"timestamp": "2026-05-24T03:26:56.226039+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "bd945519-9fbe-42fa-86fd-405788778019", "tmp_dir": "/tmp/tmpe917hxue"}
-INFO:     115.171.63.75:14613 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14614 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14615 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14615 - "GET /api/jobs/bd945519-9fbe-42fa-86fd-405788778019 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13849 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13853 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13854 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13854 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13863 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13863 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13863 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13863 - "GET /api/jobs/1aaf75d9-29c4-424a-94c0-05ce92922c6a HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13865 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13866 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13863 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13866 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:13910 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13912 - "GET /api/jobs/05d6c4e3-d472-4d13-874f-21dd1088e39c/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13914 - "GET /api/jobs/05d6c4e3-d472-4d13-874f-21dd1088e39c/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:13914 - "GET /api/jobs/05d6c4e3-d472-4d13-874f-21dd1088e39c HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14044 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14047 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14046 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14046 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14046 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14058 - "GET /api/jobs/50215767-6137-4202-959e-9651a5108425/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14059 - "GET /api/jobs/50215767-6137-4202-959e-9651a5108425/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14059 - "GET /api/jobs/50215767-6137-4202-959e-9651a5108425 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14059 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14059 - "GET /api/jobs/d4483d9f-4529-4dfd-bdfe-d12200a8ab8b/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14058 - "GET /api/jobs/d4483d9f-4529-4dfd-bdfe-d12200a8ab8b/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14059 - "GET /api/jobs/d4483d9f-4529-4dfd-bdfe-d12200a8ab8b HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14060 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14060 - "GET /api/jobs/48a6c10b-769a-4dea-9f79-5d8bb518c9b3/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14088 - "GET /api/jobs/48a6c10b-769a-4dea-9f79-5d8bb518c9b3/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14060 - "GET /api/jobs/48a6c10b-769a-4dea-9f79-5d8bb518c9b3 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14088 - "GET /images/8d9f0767f600acc5ec72e216f294333701b052d13c978298d50e8598c5da9fbe.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14094 - "GET /images/0bd5d29e3ead268144b9d4979776412ec03742347480aa34c7fa1d3d00fc73f1.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14093 - "GET /images/78eb4b7a1830ea30d0891f19aaaf955d08b996fdf55db908e9a2331e16b78898.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14092 - "GET /images/511c3dbf58e99904750dc67fe655237bd46a7e1a6bf7bf61f174698c75b94348.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14095 - "GET /images/bff62f45af64a8721dce21569316cd89796fbecb02005bcf9fddd35675106cc0.jpg HTTP/1.1" 404 Not Found
-INFO:     115.171.63.75:14187 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14206 - "GET /api/jobs/70ee32bf-12f0-4915-888c-316edf93c49e/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14207 - "GET /api/jobs/70ee32bf-12f0-4915-888c-316edf93c49e/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14207 - "GET /api/jobs/70ee32bf-12f0-4915-888c-316edf93c49e HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14208 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14280 - "GET /api/jobs/e093ab17-e424-4675-be80-fe92b99c28ee/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14281 - "GET /api/jobs/e093ab17-e424-4675-be80-fe92b99c28ee/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14281 - "GET /api/jobs/e093ab17-e424-4675-be80-fe92b99c28ee HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14300 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14300 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14309 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14309 - "GET /api/jobs/96f3c7cd-ff32-4b0f-9183-f41ad58181d2 HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14309 - "GET /api/jobs HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14309 - "GET /api/jobs/3e793401-e183-4c20-905c-05090996d08b/source HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14312 - "GET /api/jobs/3e793401-e183-4c20-905c-05090996d08b/result HTTP/1.1" 200 OK
-INFO:     115.171.63.75:14312 - "GET /api/jobs/3e793401-e183-4c20-905c-05090996d08b HTTP/1.1" 200 OK
-INFO:     223.70.229.57:65082 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56781 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65426 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65426 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65426 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:29:41.461071+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "hybrid-auto-engine", "file_count": 1}
+{"timestamp": "2026-05-25T03:29:41.542996+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "file_key": "ZHGW/截图-1-1.png", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "hybrid-auto-engine"}
+INFO:     223.70.229.57:64484 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:29:41.544443+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:29:41.550687+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:29:41.684838+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:29:41.685037+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750"}
+{"timestamp": "2026-05-25T03:29:41.685237+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "hybrid-auto-engine", "lang": "arabic", "input_path": "/tmp/tmpi20t_a6a/截图-1-1.png", "output_dir": "/tmp/tmpi20t_a6a/work/0373488d8544a4bfdc009ddb5226b8fa", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:29:41.685313+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmpi20t_a6a/截图-1-1.png' -o '/tmp/tmpi20t_a6a/work/0373488d8544a4bfdc009ddb5226b8fa' -b 'hybrid-auto-engine' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:64484 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51590 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51590 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51590 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50271 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50271 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50271 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50271 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55623 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55623 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52911 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52911 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52911 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55332 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55332 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55332 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:31:08.736368+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750"}
+{"timestamp": "2026-05-25T03:31:08.736499+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "page_count": 1}
+{"timestamp": "2026-05-25T03:31:08.827399+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:31:08.827504+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "4041e5d0-d126-444c-80bc-3effffddd750", "tmp_dir": "/tmp/tmpi20t_a6a"}
+INFO:     223.70.229.57:48480 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:48480 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61114 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61114 - "GET /api/jobs/4041e5d0-d126-444c-80bc-3effffddd750 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53676 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53676 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+INFO:     223.70.229.57:21632 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:57000 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:57000 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:57000 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:32:37.207105+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "always", "backend": "hybrid-auto-engine", "file_count": 1}
+{"timestamp": "2026-05-25T03:32:37.276336+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "file_key": "ZHGW/截图-1-1.png", "lang": "arabic", "arabic_bidi_fix": "always", "backend": "hybrid-auto-engine"}
+INFO:     223.70.229.57:57783 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:32:37.277637+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:32:37.283367+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:32:37.375612+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "always"}
+{"timestamp": "2026-05-25T03:32:37.375836+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74"}
+{"timestamp": "2026-05-25T03:32:37.376099+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "hybrid-auto-engine", "lang": "arabic", "input_path": "/tmp/tmpicww__r4/截图-1-1.png", "output_dir": "/tmp/tmpicww__r4/work/0373488d8544a4bfdc009ddb5226b8fa", "arabic_bidi_fix": "always"}
+{"timestamp": "2026-05-25T03:32:37.376191+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmpicww__r4/截图-1-1.png' -o '/tmp/tmpicww__r4/work/0373488d8544a4bfdc009ddb5226b8fa' -b 'hybrid-auto-engine' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:57783 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52462 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52462 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54918 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54918 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54918 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54918 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54918 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:58029 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:58029 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63756 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63756 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63756 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:34:04.686161+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74"}
+{"timestamp": "2026-05-25T03:34:04.686284+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "page_count": 1}
+{"timestamp": "2026-05-25T03:34:04.816386+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T03:34:04.816494+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "b586d7c0-b39a-4b5f-9d2b-b290af0e3c74", "tmp_dir": "/tmp/tmpicww__r4"}
+INFO:     223.70.229.57:58229 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50459 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53590 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53590 - "GET /api/jobs/b586d7c0-b39a-4b5f-9d2b-b290af0e3c74 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63358 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63358 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:35:56.921416+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "always", "backend": "hybrid-auto-engine", "file_count": 1}
+{"timestamp": "2026-05-25T03:35:57.030995+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "file_key": "ZHGW/19-36019_21052026033136.pdf", "lang": "arabic", "arabic_bidi_fix": "always", "backend": "hybrid-auto-engine"}
+INFO:     223.70.229.57:54466 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:35:57.032430+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:35:57.037844+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:35:57.289662+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "always"}
+{"timestamp": "2026-05-25T03:35:57.289881+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5"}
+{"timestamp": "2026-05-25T03:35:57.290122+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "hybrid-auto-engine", "lang": "arabic", "input_path": "/tmp/tmp3k2k5u1n/19-36019_21052026033136.pdf", "output_dir": "/tmp/tmp3k2k5u1n/work/9672d89ad90ec15442cc58367daf881e", "arabic_bidi_fix": "always"}
+{"timestamp": "2026-05-25T03:35:57.290196+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmp3k2k5u1n/19-36019_21052026033136.pdf' -o '/tmp/tmp3k2k5u1n/work/9672d89ad90ec15442cc58367daf881e' -b 'hybrid-auto-engine' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:54466 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54978 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51047 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51047 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64722 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64722 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64722 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50159 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64722 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50159 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63895 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64722 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50737 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50738 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50159 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50726 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63895 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50159 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63895 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63895 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64176 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64176 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51280 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51280 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61741 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61741 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63214 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:63214 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:37:25.283088+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5"}
+{"timestamp": "2026-05-25T03:37:25.283226+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "page_count": 1}
+{"timestamp": "2026-05-25T03:37:25.660218+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:37:25.660324+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "cb93fe8e-3740-474d-84ab-a7e27aa452c5", "tmp_dir": "/tmp/tmp3k2k5u1n"}
+INFO:     223.70.229.57:63214 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61777 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61779 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61779 - "GET /api/jobs/cb93fe8e-3740-474d-84ab-a7e27aa452c5 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:21859 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:61777 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:55505 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:58807 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:60080 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54912 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54912 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:57222 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:40:23.551898+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "hybrid-auto-engine", "file_count": 1}
+{"timestamp": "2026-05-25T03:40:23.628347+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "file_key": "ZHGW/19-36019_21052026033136.pdf", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "hybrid-auto-engine"}
+INFO:     223.70.229.57:50253 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:40:23.629608+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:40:23.635373+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:40:23.872500+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "lang": "arabic", "backend": "hybrid-auto-engine", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:40:23.872745+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f"}
+{"timestamp": "2026-05-25T03:40:23.872957+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "hybrid-auto-engine", "lang": "arabic", "input_path": "/tmp/tmprtc9t3kr/19-36019_21052026033136.pdf", "output_dir": "/tmp/tmprtc9t3kr/work/9672d89ad90ec15442cc58367daf881e", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:40:23.873031+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmprtc9t3kr/19-36019_21052026033136.pdf' -o '/tmp/tmprtc9t3kr/work/9672d89ad90ec15442cc58367daf881e' -b 'hybrid-auto-engine' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:50253 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49633 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49633 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49633 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49633 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49633 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61126 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61126 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61126 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51319 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51319 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51319 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51319 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56989 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:41:52.289828+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f"}
+{"timestamp": "2026-05-25T03:41:52.289965+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "page_count": 1}
+{"timestamp": "2026-05-25T03:41:52.581157+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:41:52.581257+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "d3e015de-84fc-44c7-bdfd-da0d0f953c6f", "tmp_dir": "/tmp/tmprtc9t3kr"}
+INFO:     223.70.229.57:59467 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:59467 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52361 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:59467 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:52361 - "GET /api/jobs/d3e015de-84fc-44c7-bdfd-da0d0f953c6f HTTP/1.1" 200 OK
+INFO:     223.70.229.57:46435 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:46434 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:46433 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:54734 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54734 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54734 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54734 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:43:45.163301+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "vlm-auto-engine", "file_count": 1}
+{"timestamp": "2026-05-25T03:43:45.242397+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "file_key": "ZHGW/19-36019_21052026033136.pdf", "lang": "arabic", "arabic_bidi_fix": "never", "backend": "vlm-auto-engine"}
+INFO:     223.70.229.57:61025 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:43:45.243676+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:43:45.249614+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:43:45.394788+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "lang": "arabic", "backend": "vlm-auto-engine", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:43:45.395009+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426"}
+{"timestamp": "2026-05-25T03:43:45.395267+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "vlm-auto-engine", "lang": "arabic", "input_path": "/tmp/tmpyhmhhpfo/19-36019_21052026033136.pdf", "output_dir": "/tmp/tmpyhmhhpfo/work/9672d89ad90ec15442cc58367daf881e", "arabic_bidi_fix": "never"}
+{"timestamp": "2026-05-25T03:43:45.395343+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmpyhmhhpfo/19-36019_21052026033136.pdf' -o '/tmp/tmpyhmhhpfo/work/9672d89ad90ec15442cc58367daf881e' -b 'vlm-auto-engine' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61025 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:65317 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64634 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64634 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64634 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:44:54.372027+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426"}
+{"timestamp": "2026-05-25T03:44:54.372156+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "page_count": 1}
+{"timestamp": "2026-05-25T03:44:54.632725+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:44:54.632824+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "63369104-a3b0-45bf-a2ed-c3e8ac72c426", "tmp_dir": "/tmp/tmpyhmhhpfo"}
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54533 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54533 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56719 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53432 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:54533 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51527 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56719 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53432 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:64893 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56709 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:56719 - "GET /images/e70da15a11b2703a851e495df010b7459ec93dc3bad16c498f3ece678698e6c5.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:51527 - "GET /images/4d7508613386b1341a9d34735b08cecae1a553b3fd465a46e89551a3ad27ee72.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:64893 - "GET /images/62f009f4abd6ffd979706b65171d0eb87b5ac11facf7ff55807d998ad85b918f.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:53432 - "GET /images/175e9fbd277bdb65f51c25aba002116c5a651d3c64c2df9d0656b6087a94f7f7.jpg HTTP/1.1" 404 Not Found
+INFO:     223.70.229.57:56709 - "GET /api/jobs/63369104-a3b0-45bf-a2ed-c3e8ac72c426 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:34720 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:34720 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:34720 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:34720 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:56:51.694664+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "auto", "backend": "pipeline", "file_count": 1}
+{"timestamp": "2026-05-25T03:56:51.771759+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "file_key": "ZHGW/19-36019_21052026033136.pdf", "lang": "arabic", "arabic_bidi_fix": "auto", "backend": "pipeline"}
+INFO:     223.70.229.57:52190 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T03:56:51.773309+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:56:51.778698+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:56:52.052001+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "lang": "arabic", "backend": "pipeline", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T03:56:52.052221+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000"}
+{"timestamp": "2026-05-25T03:56:52.052465+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "pipeline", "lang": "arabic", "input_path": "/tmp/tmpbzt15bf2/19-36019_21052026033136.pdf", "output_dir": "/tmp/tmpbzt15bf2/work/9672d89ad90ec15442cc58367daf881e", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T03:56:52.052541+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmpbzt15bf2/19-36019_21052026033136.pdf' -o '/tmp/tmpbzt15bf2/work/9672d89ad90ec15442cc58367daf881e' -b 'pipeline' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:52190 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52691 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52691 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52416 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52416 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52416 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:62284 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:62284 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49990 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:49990 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T03:57:41.580299+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000"}
+{"timestamp": "2026-05-25T03:57:41.580430+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "page_count": 1}
+{"timestamp": "2026-05-25T03:57:41.787835+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "file_key": "ZHGW/19-36019_21052026033136.pdf"}
+{"timestamp": "2026-05-25T03:57:41.787936+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "cf5fa7da-5403-4f49-9a57-5afa72090000", "tmp_dir": "/tmp/tmpbzt15bf2"}
+INFO:     223.70.229.57:62173 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61209 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53644 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53644 - "GET /api/jobs/cf5fa7da-5403-4f49-9a57-5afa72090000 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:53993 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:62857 - "DELETE /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:62857 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:62857 - "GET /api/files?show_all=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T04:03:28.562638+00:00", "level": "INFO", "logger": "api_server", "message": "Received job submission", "lang": "arabic", "arabic_bidi_fix": "auto", "backend": "pipeline", "file_count": 2}
+{"timestamp": "2026-05-25T04:03:28.643984+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "file_key": "ZHGW/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf", "lang": "arabic", "arabic_bidi_fix": "auto", "backend": "pipeline"}
+{"timestamp": "2026-05-25T04:03:28.644161+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "file_key": "ZHGW/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf"}
+{"timestamp": "2026-05-25T04:03:28.723199+00:00", "level": "INFO", "logger": "api_server", "message": "Created job", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "file_key": "ZHGW/截图-1-1.png", "lang": "arabic", "arabic_bidi_fix": "auto", "backend": "pipeline"}
+INFO:     223.70.229.57:62857 - "POST /api/jobs HTTP/1.1" 202 Accepted
+{"timestamp": "2026-05-25T04:03:28.724549+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "file_key": "ZHGW/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf"}
+{"timestamp": "2026-05-25T04:03:28.924011+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "lang": "arabic", "backend": "pipeline", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T04:03:28.924213+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca"}
+{"timestamp": "2026-05-25T04:03:28.924456+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "pipeline", "lang": "arabic", "input_path": "/tmp/tmp45q6riqx/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf", "output_dir": "/tmp/tmp45q6riqx/work/0995d4288cd4944ec8a0ebdda9e78a47", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T04:03:28.924529+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmp45q6riqx/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf' -o '/tmp/tmp45q6riqx/work/0995d4288cd4944ec8a0ebdda9e78a47' -b 'pipeline' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:62857 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60021 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55618 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60586 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60586 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60586 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60586 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:60586 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50178 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50178 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:50178 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T04:04:16.959876+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca"}
+{"timestamp": "2026-05-25T04:04:16.960001+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "page_count": 1}
+{"timestamp": "2026-05-25T04:04:17.284677+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "file_key": "ZHGW/civilID-Habib Rubani Muhammad Nadeem _21052026032800.pdf"}
+{"timestamp": "2026-05-25T04:04:17.284779+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "737b0bfe-62a3-478b-aa51-2e5ed34340ca", "tmp_dir": "/tmp/tmp45q6riqx"}
+{"timestamp": "2026-05-25T04:04:17.287825+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Starting OCR job", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T04:04:17.295288+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Downloading file from S3", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T04:04:17.428332+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Running OCR", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "lang": "arabic", "backend": "pipeline", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T04:04:17.428538+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Calling run_async", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0"}
+{"timestamp": "2026-05-25T04:04:17.428802+00:00", "level": "INFO", "logger": "mineru_runner", "message": "Executing MinerU command", "backend": "pipeline", "lang": "arabic", "input_path": "/tmp/tmp50lfue19/截图-1-1.png", "output_dir": "/tmp/tmp50lfue19/work/0373488d8544a4bfdc009ddb5226b8fa", "arabic_bidi_fix": "auto"}
+{"timestamp": "2026-05-25T04:04:17.428881+00:00", "level": "INFO", "logger": "mineru_runner", "message": "MinerU equivalent command", "command": "mineru -p '/tmp/tmp50lfue19/截图-1-1.png' -o '/tmp/tmp50lfue19/work/0373488d8544a4bfdc009ddb5226b8fa' -b 'pipeline' -l 'arabic' -m 'ocr' -f 'true' -t 'true'"}
+INFO:     223.70.229.57:50178 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55848 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52051 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52051 - "GET /api/jobs/737b0bfe-62a3-478b-aa51-2e5ed34340ca HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61602 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:61602 - "GET /api/jobs HTTP/1.1" 200 OK
+{"timestamp": "2026-05-25T04:05:04.326553+00:00", "level": "INFO", "logger": "ocr_worker", "message": "run_async completed", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0"}
+{"timestamp": "2026-05-25T04:05:04.326714+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR completed, uploading results", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "page_count": 1}
+{"timestamp": "2026-05-25T04:05:04.416546+00:00", "level": "INFO", "logger": "ocr_worker", "message": "OCR job completed successfully", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "file_key": "ZHGW/截图-1-1.png"}
+{"timestamp": "2026-05-25T04:05:04.416676+00:00", "level": "INFO", "logger": "ocr_worker", "message": "Cleaning up temporary files", "job_id": "c46cf835-eaa0-4aad-8116-dba436b723a0", "tmp_dir": "/tmp/tmp50lfue19"}
+INFO:     223.70.229.57:61602 - "GET /api/jobs/c46cf835-eaa0-4aad-8116-dba436b723a0 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:52198 - "GET /api/jobs/c46cf835-eaa0-4aad-8116-dba436b723a0/source HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55787 - "GET /api/jobs/c46cf835-eaa0-4aad-8116-dba436b723a0/result HTTP/1.1" 200 OK
+INFO:     223.70.229.57:55787 - "GET /api/jobs/c46cf835-eaa0-4aad-8116-dba436b723a0 HTTP/1.1" 200 OK
+INFO:     223.70.229.57:59711 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     223.70.229.57:51526 - "GET /api/files?show_all=false HTTP/1.1" 200 OK

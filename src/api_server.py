@@ -57,6 +57,7 @@ class SubmitRequest(BaseModel):
     file_keys: list[str]
     lang: Optional[str] = None  # 若为 None 则使用 config 默认值
     arabic_bidi_fix: Optional[str] = None  # 阿拉伯语文本方向修复模式：auto, always, never
+    backend: Optional[str] = None  # MinerU 后端模式：pipeline, vlm-auto-engine, hybrid-auto-engine
 
 
 class SubmitResponse(BaseModel):
@@ -210,6 +211,15 @@ async def submit_jobs(body: SubmitRequest, request: Request):
     config: AppConfig = request.app.state.config
     job_store: JobStore = request.app.state.job_store
 
+    # 添加日志记录接收到的参数
+    logger.info(
+        "Received job submission",
+        lang=body.lang,
+        arabic_bidi_fix=body.arabic_bidi_fix,
+        backend=body.backend,
+        file_count=len(body.file_keys)
+    )
+
     created_jobs = []
 
     for file_key in body.file_keys:
@@ -243,6 +253,17 @@ async def submit_jobs(body: SubmitRequest, request: Request):
             submitted_at=submitted_at,
             lang=body.lang or config.mineru_lang,
             arabic_bidi_fix=body.arabic_bidi_fix or config.arabic_bidi_fix,
+            backend=body.backend or config.mineru_backend,
+        )
+        
+        # 记录实际使用的值
+        logger.info(
+            "Created job",
+            job_id=job_id,
+            file_key=file_key,
+            lang=body.lang or config.mineru_lang,
+            arabic_bidi_fix=body.arabic_bidi_fix or config.arabic_bidi_fix,
+            backend=body.backend or config.mineru_backend,
         )
 
         asyncio.create_task(run_ocr_job(job_id, file_key, config, job_store))
