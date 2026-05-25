@@ -1,9 +1,9 @@
-"""MinerU OCR 执行器模块。"""
+"""MinerU OCR 执行器模块 - 使用异步子进程避免僵尸进程。"""
 
+import asyncio
 import hashlib
 import json
 import os
-import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -16,6 +16,199 @@ _PYTHON = sys.executable
 SUPPORTED_EXTENSIONS = {".pdf", ".png", ".jpg", ".jpeg", ".tiff"}
 
 
+def _normalize_arabic_text(text: str) -> str:
+    """
+    规范化阿拉伯语文本。
+    
+    处理：
+    1. Unicode 规范化
+    2. 统一不同形式的阿拉伯语字符
+    3. 处理连字
+    """
+    import unicodedata
+    
+    # Unicode 规范化（NFKC：兼容性分解后再组合）
+    text = unicodedata.normalize('NFKC', text)
+    
+    # 阿拉伯语连字转换为标准形式
+    ligatures = {
+        '\uFEF5': '\u0644\u0627',  # ﻵ -> لا
+        '\uFEF6': '\u0644\u0627',  # ﻶ -> لا
+        '\uFEF7': '\u0644\u0627',  # ﻷ -> لا
+        '\uFEF8': '\u0644\u0627',  # ﻸ -> لا
+        '\uFEF9': '\u0644\u0627',  # ﻹ -> لا
+        '\uFEFA': '\u0644\u0627',  # ﻺ -> لا
+        '\uFEFB': '\u0644\u0627',  # ﻻ -> لا
+        '\uFEFC': '\u0644\u0627',  # ﻼ -> لا
+    }
+    
+    for ligature, standard in ligatures.items():
+        text = text.replace(ligature, standard)
+    
+    return text
+
+
+def _clean_arabic_text(text: str) -> str:
+    """
+    清理阿拉伯语文本中的多余字符。
+    
+    处理：
+    1. 移除零宽字符
+    2. 规范化空格
+    3. 移除控制字符
+    """
+    import re
+    
+    # 移除零宽字符（Zero-width characters）
+    text = re.sub(r'[\u200B-\u200D\uFEFF]', '', text)
+    
+    # 移除其他不可见的控制字符
+    text = re.sub(r'[\u0000-\u001F\u007F-\u009F]', '', text)
+    
+    # 规范化空格（但保留换行符）
+    lines = text.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        # 将多个空格替换为单个空格
+        line = re.sub(r'[ \t]+', ' ', line)
+        # 移除行首行尾空格
+        line = line.strip()
+        cleaned_lines.append(line)
+    
+    return '\n'.join(cleaned_lines)
+
+
+def _post_process_arabic_text(text: str, normalize: bool = True, clean: bool = True) -> str:
+    """
+    阿拉伯语文本后处理。
+    
+    参数：
+        text: 要处理的文本
+        normalize: 是否规范化字符
+        clean: 是否清理多余字符
+    
+    返回：
+        处理后的文本
+    """
+    if not text:
+        return text
+    
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    original_length = len(text)
+    
+    if normalize:
+        logger.info("Normalizing Arabic text...")
+        text = _normalize_arabic_text(text)
+    
+    if clean:
+        logger.info("Cleaning Arabic text...")
+        text = _clean_arabic_text(text)
+    
+    logger.info(f"Post-processing complete. Length: {original_length} -> {len(text)}")
+    
+    return text
+
+
+def _fix_arabic_text_direction(text: str, mode: str = "auto") -> str:
+    """
+    智能修复阿拉伯语文本方向问题。
+    
+    阿拉伯语是从右到左（RTL）书写的。OCR 识别结果中，有些文本是逻辑顺序（存储顺序），
+    有些已经是视觉顺序（显示顺序）。
+    
+    参数：
+        text: 要处理的文本
+        mode: 处理模式
+            - "never": 不做任何处理，保持原样
+            - "always": 总是应用 bidi 转换
+            - "auto": 智能检测（默认，推荐）
+    
+    返回：
+        处理后的文本
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.info(f"_fix_arabic_text_direction called with mode={mode}, text_length={len(text) if text else 0}")
+    
+    # never 模式：直接返回原文本
+    if not text or mode == "never":
+        logger.info(f"Mode is 'never' or text is empty, returning original text")
+        return text
+    
+    # 检测是否包含阿拉伯语字符
+    import re
+    arabic_pattern = re.compile(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]')
+    has_arabic = arabic_pattern.search(text)
+    logger.info(f"Arabic characters detected: {bool(has_arabic)}")
+    
+    if not has_arabic:
+        return text
+    
+    try:
+        from bidi.algorithm import get_display
+        
+        if mode == "always":
+            # always 模式：总是应用 bidi 转换
+            logger.info("Applying 'always' mode - will transform all Arabic lines")
+            lines = text.split('\n')
+            fixed_lines = []
+            transformed_count = 0
+            for line in lines:
+                if arabic_pattern.search(line):
+                    try:
+                        fixed_line = get_display(line)
+                        fixed_lines.append(fixed_line)
+                        if fixed_line != line:
+                            transformed_count += 1
+                    except Exception as e:
+                        logger.warning(f"Failed to transform line: {e}")
+                        fixed_lines.append(line)
+                else:
+                    fixed_lines.append(line)
+            logger.info(f"Transformed {transformed_count} lines in 'always' mode")
+            return '\n'.join(fixed_lines)
+        
+        elif mode == "auto":
+            # auto 模式：目前与 always 相同，应用 bidi 转换
+            logger.info("Applying 'auto' mode - will transform all Arabic lines")
+            lines = text.split('\n')
+            fixed_lines = []
+            transformed_count = 0
+            
+            for line in lines:
+                if not line.strip():
+                    fixed_lines.append(line)
+                    continue
+                    
+                if arabic_pattern.search(line):
+                    try:
+                        # 应用 bidi 转换
+                        fixed_line = get_display(line)
+                        fixed_lines.append(fixed_line)
+                        if fixed_line != line:
+                            transformed_count += 1
+                    except Exception as e:
+                        logger.warning(f"Failed to transform line: {e}")
+                        fixed_lines.append(line)
+                else:
+                    fixed_lines.append(line)
+            
+            logger.info(f"Transformed {transformed_count} lines in 'auto' mode")
+            return '\n'.join(fixed_lines)
+        
+        else:
+            # 未知模式，保持原样
+            logger.warning(f"Unknown mode '{mode}', returning original text")
+            return text
+        
+    except ImportError as e:
+        # 如果没有安装 python-bidi，返回原文本
+        logger.error(f"python-bidi not installed: {e}")
+        return text
+
+
 @dataclass
 class OCRResult:
     """OCR 识别结果。"""
@@ -26,15 +219,20 @@ class OCRResult:
 
 
 class MinerURunner:
-    """通过 subprocess 调用 mineru CLI 执行 OCR。"""
+    """通过异步 subprocess 调用 mineru CLI 执行 OCR。"""
 
-    def __init__(self, backend: str = "pipeline", lang: str = "ch"):
+    def __init__(self, backend: str = "pipeline", lang: str = "ch", arabic_bidi_fix: str = "auto", 
+                 arabic_post_process: bool = True):
         self.backend = backend
         self.lang = lang
+        self.arabic_bidi_fix = arabic_bidi_fix
+        self.arabic_post_process = arabic_post_process
 
-    def run(self, input_path: Path, work_dir: Path) -> OCRResult:
+    async def run_async(self, input_path: Path, work_dir: Path) -> OCRResult:
         """
-        对 input_path 执行 OCR，返回 OCRResult。
+        异步执行 OCR，返回 OCRResult。
+        
+        使用 asyncio.create_subprocess_exec 避免僵尸进程问题。
 
         若文件格式不支持则抛出 UnsupportedFormatError。
         若 mineru 返回非零退出码则抛出 MinerUError。
@@ -55,23 +253,82 @@ class MinerURunner:
             f"'-b', '{self.backend}', '-l', '{self.lang}', '-m', 'ocr', "
             f"'-f', 'true', '-t', 'true']; main()"
         )
+        
         # 开启中文公式识别优化（实验性功能，对中文文档有效）
         env = {
             **os.environ,
             "MINERU_FORMULA_ENABLE": "true",
             "MINERU_FORMULA_CH_SUPPORT": "true",
         }
-        result = subprocess.run(
-            [_PYTHON, "-c", mineru_cmd],
-            capture_output=True,
-            text=True,
-            env=env,
-        )
+        
+        # 将 stdout/stderr 重定向到临时文件，而不是 PIPE
+        # 这样可以避免 MinerU 的子进程导致 communicate() 卡住
+        stdout_file = work_dir / f"{stem_md5}_stdout.log"
+        stderr_file = work_dir / f"{stem_md5}_stderr.log"
+        
+        with open(stdout_file, 'w') as stdout_f, open(stderr_file, 'w') as stderr_f:
+            # 使用 asyncio.create_subprocess_exec 创建异步子进程
+            process = await asyncio.create_subprocess_exec(
+                _PYTHON,
+                "-c",
+                mineru_cmd,
+                stdout=stdout_f,
+                stderr=stderr_f,
+                env=env,
+            )
+            
+            try:
+                # 只等待进程结束，不读取输出
+                returncode = await asyncio.wait_for(
+                    process.wait(),
+                    timeout=3600  # 1小时超时
+                )
+                
+            except asyncio.TimeoutError:
+                # 超时则终止进程
+                try:
+                    process.terminate()
+                    await asyncio.wait_for(process.wait(), timeout=5)
+                except asyncio.TimeoutError:
+                    process.kill()
+                    await process.wait()
+                raise MinerUError("OCR 处理超时（超过1小时）")
+            
+            except Exception:
+                # 发生任何异常时，确保进程被终止
+                if process.returncode is None:
+                    try:
+                        process.terminate()
+                        await asyncio.wait_for(process.wait(), timeout=5)
+                    except asyncio.TimeoutError:
+                        process.kill()
+                        await process.wait()
+                raise
+        
+        # 读取输出文件
+        stderr_text = stderr_file.read_text(encoding='utf-8', errors='replace') if stderr_file.exists() else ""
 
-        if result.returncode != 0:
-            raise MinerUError(result.stderr)
+        if returncode != 0:
+            raise MinerUError(stderr_text)
 
         md_content = self._read_markdown(actual_output_dir, stem_md5)
+        
+        # 如果是阿拉伯语，应用后处理和文本方向修复
+        if self.lang == 'arabic':
+            import logging
+            logger = logging.getLogger(__name__)
+            
+            # 1. 后处理优化（规范化和清理）
+            if self.arabic_post_process:
+                logger.info("Applying Arabic post-processing...")
+                md_content = _post_process_arabic_text(md_content, normalize=True, clean=True)
+            
+            # 2. 文本方向修复
+            logger.info(f"Applying Arabic BiDi fix with mode: {self.arabic_bidi_fix}")
+            original_length = len(md_content)
+            md_content = _fix_arabic_text_direction(md_content, mode=self.arabic_bidi_fix)
+            logger.info(f"Arabic BiDi fix applied. Original length: {original_length}, New length: {len(md_content)}")
+        
         page_count = self._extract_page_count(actual_output_dir, stem_md5)
         images_dir = self._find_images_dir(actual_output_dir)
 

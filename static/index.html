@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@5.0.0/lib/index.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
 
@@ -91,6 +92,14 @@
                 <option value="latin">拉丁语系（latin）</option>
                 <option value="cyrillic">西里尔字母（cyrillic）</option>
                 <option value="devanagari">梵文（devanagari）</option>
+              </select>
+            </label>
+            <label style="font-size:13px;color:#374151;display:flex;align-items:center;gap:6px;" id="arabic-bidi-label">
+              阿语文本修复：
+              <select id="arabic-bidi-fix" style="font-size:13px;padding:4px 8px;border:1px solid #dde1e9;border-radius:6px;background:#fff;cursor:pointer;" title="阿拉伯语文本方向修复模式">
+                <option value="auto">自动（auto）</option>
+                <option value="always">总是转换（always）</option>
+                <option value="never">从不转换（never）</option>
               </select>
             </label>
             <span id="submit-status" style="font-size:13px; color:#6b7280;"></span>

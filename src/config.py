@@ -19,6 +19,7 @@ class AppConfig:
     log_level: str = "INFO"
     mineru_backend: str = "pipeline"
     mineru_lang: str = "ch"
+    arabic_bidi_fix: str = "auto"  # auto, always, never
 
 
 class ConfigLoader:
@@ -37,6 +38,7 @@ class ConfigLoader:
             "log_level": os.environ.get("LOG_LEVEL", "INFO"),
             "mineru_backend": os.environ.get("MINERU_BACKEND", "pipeline"),
             "mineru_lang": os.environ.get("MINERU_LANG", "ch"),
+            "arabic_bidi_fix": os.environ.get("ARABIC_BIDI_FIX", "auto"),
         }
 
         # YAML 文件覆盖环境变量
@@ -52,6 +54,7 @@ class ConfigLoader:
                 "log_level": "log_level",
                 "mineru_backend": "mineru_backend",
                 "mineru_lang": "mineru_lang",
+                "arabic_bidi_fix": "arabic_bidi_fix",
             }
             for yaml_key, field in field_map.items():
                 if yaml_key in yaml_data and yaml_data[yaml_key] is not None:

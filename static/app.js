@@ -206,6 +206,7 @@ async function submitJobs() {
 
   const fileKeys = checked.map(cb => cb.value);
   const lang = document.getElementById('ocr-lang')?.value || null;
+  const arabicBidiFix = document.getElementById('arabic-bidi-fix')?.value || null;
   const btn = document.getElementById('submit-btn');
   const statusEl = document.getElementById('submit-status');
 
@@ -216,7 +217,7 @@ async function submitJobs() {
     const result = await apiFetch('/api/jobs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file_keys: fileKeys, lang }),
+      body: JSON.stringify({ file_keys: fileKeys, lang, arabic_bidi_fix: arabicBidiFix }),
     });
 
     statusEl.textContent = `已提交 ${result.jobs.length} 个任务`;
@@ -486,6 +487,33 @@ async function showDiffView(jobId) {
     const markdown = resultResult.value;
     const html = typeof marked !== 'undefined' ? marked.parse(markdown) : escapeHtml(markdown).replace(/\n/g, '<br>');
     resultPanel.innerHTML = `<div class="markdown-body">${html}</div>`;
+    
+    // 初始化 Mermaid 渲染流程图
+    if (typeof mermaid !== 'undefined') {
+      mermaid.initialize({ 
+        startOnLoad: false, 
+        theme: 'default',
+        securityLevel: 'loose'
+      });
+      
+      // 查找所有 mermaid 代码块并转换为 mermaid div
+      const mermaidBlocks = resultPanel.querySelectorAll('pre code.language-mermaid');
+      mermaidBlocks.forEach((codeBlock, index) => {
+        const code = codeBlock.textContent;
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = code;
+        mermaidDiv.style.textAlign = 'center';
+        mermaidDiv.style.margin = '20px 0';
+        // 替换整个 <pre> 元素
+        codeBlock.parentElement.replaceWith(mermaidDiv);
+      });
+      
+      // 运行 Mermaid 渲染
+      if (mermaidBlocks.length > 0) {
+        mermaid.run({ querySelector: '.markdown-body .mermaid' });
+      }
+    }
   } else {
     resultPanel.innerHTML = `<div class="error-msg" style="margin:16px">加载 OCR 结果失败：${escapeHtml(resultResult.reason.message)}</div>`;
   }
@@ -598,6 +626,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化 marked + KaTeX 公式渲染
   if (typeof markedKatex !== 'undefined') {
     marked.use(markedKatex({ throwOnError: false }));
+  }
+
+  // 监听语言选择变化，控制阿拉伯语选项的显示
+  const langSelect = document.getElementById('ocr-lang');
+  const arabicBidiLabel = document.getElementById('arabic-bidi-label');
+  
+  function updateArabicBidiVisibility() {
+    if (langSelect && arabicBidiLabel) {
+      if (langSelect.value === 'arabic') {
+        arabicBidiLabel.style.display = 'flex';
+      } else {
+        arabicBidiLabel.style.display = 'none';
+      }
+    }
+  }
+  
+  if (langSelect) {
+    langSelect.addEventListener('change', updateArabicBidiVisibility);
+    // 初始化时检查
+    updateArabicBidiVisibility();
   }
 
   loadConfig();

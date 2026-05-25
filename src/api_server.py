@@ -56,6 +56,7 @@ class ConfigResponse(BaseModel):
 class SubmitRequest(BaseModel):
     file_keys: list[str]
     lang: Optional[str] = None  # 若为 None 则使用 config 默认值
+    arabic_bidi_fix: Optional[str] = None  # 阿拉伯语文本方向修复模式：auto, always, never
 
 
 class SubmitResponse(BaseModel):
@@ -90,12 +91,17 @@ logger = StructuredLogger("api_server")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    from src.ocr_worker import start_monitor, stop_monitor
+    
     config = ConfigLoader().load(str(_CONFIG_FILE))
     job_store = JobStore(db_path=str(_PROJECT_ROOT / "jobs.db"))
     await job_store.init_db()
 
     app.state.config = config
     app.state.job_store = job_store
+
+    # 启动卡住任务监控
+    start_monitor(job_store, check_interval=300, max_hours=2.0)
 
     # 恢复上次未完成的任务（pending / running → 重新入队）
     unfinished = await job_store.list_pending_and_running()
@@ -109,6 +115,8 @@ async def lifespan(app: FastAPI):
 
     yield
 
+    # 停止监控任务
+    stop_monitor()
     await job_store.close()
 
 
@@ -234,6 +242,7 @@ async def submit_jobs(body: SubmitRequest, request: Request):
             file_size=file_size,
             submitted_at=submitted_at,
             lang=body.lang or config.mineru_lang,
+            arabic_bidi_fix=body.arabic_bidi_fix or config.arabic_bidi_fix,
         )
 
         asyncio.create_task(run_ocr_job(job_id, file_key, config, job_store))
